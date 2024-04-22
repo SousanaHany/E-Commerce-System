@@ -4,11 +4,14 @@
  */
 package project1;
 
+import javax.swing.JOptionPane;
+
 public class Order {
     Cart c1;
      int customerId;
      int orderId;
      Product[] products;
+      float totalPrice;
  
 
     public Order() {
@@ -31,14 +34,17 @@ public class Order {
     }
 
     public void printOrderInfo() {
-        System.out.println("Order ID: " + orderId);
-        System.out.println("Customer ID: " + customerId);
-        System.out.println("Products:");
+       String message=" order id: "+ orderId + ", customer id: "+ customerId +", products in order: " ; 
+        for (int i = 0 ; i<c1.nProducts ; i++){
+            if(c1.products[i]!=null){
+    message+=  c1.products[i].toString();    
+            }
+        }
         
-        for (int i = 0 ; i<c1.nProducts ; i++)
-            if(c1.products[i]!=null)
-                System.out.println(c1.products[i].toString());
-        System.out.println("Total Price: $" + c1.calculatePrice());
+         message+= " total price: $ "+ c1.calculatePrice(); 
+              JOptionPane.showMessageDialog( null,message);
     }
 }
+
+
 
